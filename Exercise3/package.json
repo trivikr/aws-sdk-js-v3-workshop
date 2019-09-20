@@ -1,0 +1,77 @@
+{
+  "name": "aws-sdk-js-v3-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Note taking application for AWS JS SDK v3 workshop",
+  "dependencies": {
+    "@aws-crypto/sha256-browser": "^0.1.0-preview.1",
+    "@aws-sdk/client-cognito-identity-browser": "^0.1.0-preview.2",
+    "@aws-sdk/client-dynamodb-node": "^0.1.0-preview.2",
+    "@aws-sdk/client-s3-browser": "^0.1.0-preview.2",
+    "@aws-sdk/credential-provider-cognito-identity": "^0.1.0-preview.2",
+    "@aws-sdk/s3-request-presigner": "^0.1.0-preview.2",
+    "@aws-sdk/util-create-request": "^0.1.0-preview.2",
+    "@aws-sdk/util-format-url": "^0.1.0-preview.1",
+    "@reach/router": "^1.2.1",
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.9.0"
+  },
+  "scripts": {
+    "mb": "aws s3 mb s3://$AWS_JS_SDK_ID",
+    "bundle": "webpack",
+    "package": "sam package --output-template-file packaged.yaml --s3-bucket $AWS_JS_SDK_ID",
+    "deploy": "sam deploy --template-file packaged.yaml --stack-name $AWS_JS_SDK_ID --capabilities CAPABILITY_IAM",
+    "bpd": "npm run build && npm run package && npm run deploy",
+    "describe": "aws cloudformation describe-stacks --stack-name $AWS_JS_SDK_ID --query 'Stacks[].Outputs[?OutputKey==`NotesApi`][OutputValue]'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "clean": "aws s3 rb s3://$AWS_JS_SDK_ID --force && aws cloudformation delete-stack --stack-name $AWS_JS_SDK_ID"
+  },
+  "keywords": [
+    "aws",
+    "JavaScript",
+    "TypeScript",
+    "SDK",
+    "v3",
+    "workshop",
+    "Node.js"
+  ],
+  "author": "Kamat, Trivikram",
+  "license": "MIT-0",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.31",
+    "@types/jest": "^24.0.18",
+    "@types/reach__router": "^1.2.4",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/node": "^10.14.14",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "aws-sam-webpack-plugin": "^0.3.1",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-loader": "^3.0.0",
+    "react-scripts": "3.1.1",
+    "ts-loader": "^6.0.4",
+    "typescript": "~3.5.3",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  }
+}

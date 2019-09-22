@@ -30,12 +30,13 @@ const CreateNote = (props: RouteComponentProps) => {
         formData.append("file", file);
         attachment = await fetch(putObjectUrl, {
           method: "POST",
-          // headers: {
-          //   "Access-Control-Allow-Origin": "*",
-          //   "Access-Control-Allow-Headers":
-          //     "Origin, X-Requested-With, Content-Type, Accept",
-          //   "Access-Control-Allow-Methods": "GET, POST, PUT"
-          // },
+          headers: {
+            "Content-Type": "multipart/form-data"
+            //  "Access-Control-Allow-Origin": "*",
+            //  "Access-Control-Allow-Headers":
+            //     "Origin, X-Requested-With, Content-Type, Accept",
+            //   "Access-Control-Allow-Methods": "GET, POST, PUT"
+          },
           body: formData
         });
       } catch (error) {

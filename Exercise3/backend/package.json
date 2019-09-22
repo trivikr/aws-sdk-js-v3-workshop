@@ -33,6 +33,7 @@
   "license": "MIT-0",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.31",
+    "@types/busboy": "^0.2.3",
     "@types/node": "^10.14.14",
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",

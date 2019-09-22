@@ -6,6 +6,22 @@ Description: >
   Frontend resources for the AWS JS SDK v3 workshop
 
 Resources:
+  S3BucketName:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: aws-js-sdk-v3-workshop-files
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+              - "*"
+            AllowedMethods:
+              - POST
+              - GET
+              - PUT
+              - DELETE
+              - HEAD
+            AllowedHeaders:
+              - "*"
   S3IdentityPool:
     Type: AWS::Cognito::IdentityPool
     Properties:

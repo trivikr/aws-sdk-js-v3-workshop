@@ -1,5 +1,5 @@
-import dynamoDBClient from "./libs/dynamoDB";
-import { success, failure } from "./libs/response";
+import dynamoDBClient from "./dynamoDB";
+import { success, failure } from "./../response";
 import { ScanCommand } from "@aws-sdk/client-dynamodb-node/commands/ScanCommand";
 
 export async function main() {

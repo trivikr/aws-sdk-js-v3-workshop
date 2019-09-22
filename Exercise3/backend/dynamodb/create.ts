@@ -1,7 +1,7 @@
 import crypto from "crypto";
-import dynamoDBClient from "./libs/dynamoDB";
+import dynamoDBClient from "./dynamoDB";
 import { PutItemCommand } from "@aws-sdk/client-dynamodb-node/commands/PutItemCommand";
-import { success, failure } from "./libs/response";
+import { success, failure } from "./../response";
 
 export async function main(event) {
   const data = JSON.parse(event.body);

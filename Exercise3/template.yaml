@@ -14,6 +14,7 @@ Globals:
     Environment:
       Variables:
         tableName: !Ref NotesTable
+        bucketName: !Ref S3BucketName
 
 Resources:
   S3BucketName:

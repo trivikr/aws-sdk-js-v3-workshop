@@ -1,4 +1,4 @@
-import { DeleteObjectCommand } from "@aws-sdk/client-s3-browser/commands/DeleteObjectCommand";
+import { DeleteObjectCommand } from "@aws-sdk/client-s3-node/commands/DeleteObjectCommand";
 import { s3Client } from "./s3Client";
 import { success, failure } from "../response";
 

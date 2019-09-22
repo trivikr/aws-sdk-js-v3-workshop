@@ -3,6 +3,5 @@
     "target": "es2018",
     "module": "commonjs",
     "esModuleInterop": true
-  },
-  "include": ["src/**/*.ts"]
+  }
 }

@@ -1,5 +1,5 @@
 import { s3Client } from "./s3Client";
-import { PutObjectCommand } from "@aws-sdk/client-s3-browser/commands/PutObjectCommand";
+import { PutObjectCommand } from "@aws-sdk/client-s3-node/commands/PutObjectCommand";
 import { success, failure } from "../response";
 
 export async function main(event) {

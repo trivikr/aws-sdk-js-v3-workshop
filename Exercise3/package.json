@@ -5,10 +5,8 @@
   "description": "Note taking application for AWS JS SDK v3 workshop",
   "dependencies": {
     "@aws-crypto/sha256-browser": "^0.1.0-preview.1",
-    "@aws-sdk/client-cognito-identity-browser": "^0.1.0-preview.2",
     "@aws-sdk/client-dynamodb-node": "^0.1.0-preview.2",
-    "@aws-sdk/client-s3-browser": "^0.1.0-preview.2",
-    "@aws-sdk/credential-provider-cognito-identity": "^0.1.0-preview.2",
+    "@aws-sdk/client-s3-node": "^0.1.0-preview.2",
     "@aws-sdk/s3-request-presigner": "^0.1.0-preview.2",
     "@aws-sdk/util-create-request": "^0.1.0-preview.2",
     "@aws-sdk/util-format-url": "^0.1.0-preview.1",
@@ -57,10 +55,10 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.31",
     "@types/jest": "^24.0.18",
+    "@types/node": "^10.14.14",
     "@types/reach__router": "^1.2.4",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
-    "@types/node": "^10.14.14",
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
     "aws-sam-webpack-plugin": "^0.3.1",

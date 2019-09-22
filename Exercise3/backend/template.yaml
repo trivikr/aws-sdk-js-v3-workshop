@@ -1,0 +1,170 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AwsJsSdkV3Workshop
+
+  Backend for the AWS JS SDK v3 workshop
+
+Globals:
+  Api:
+    Cors: "'*'"
+  Function:
+    Runtime: nodejs10.x
+    Timeout: 180
+    Environment:
+      Variables:
+        tableName: !Ref NotesTable
+        bucketName: !Ref NotesBucket
+
+Resources:
+  NotesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: aws-js-sdk-v3-workshop-files-new
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+              - "*"
+            AllowedMethods:
+              - POST
+              - GET
+              - PUT
+              - DELETE
+              - HEAD
+            AllowedHeaders:
+              - "*"
+  NotesTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: aws-js-sdk-workshop-notes-new
+      PrimaryKey:
+        Name: noteId
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+  CreateNote:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamodb
+      Handler: create.main
+      Policies:
+        # Update to just "dynamodb:PutItem"
+        - DynamoDBCrudPolicy:
+            TableName: !Ref NotesTable
+      Events:
+        CreateNote:
+          Type: Api
+          Properties:
+            Path: /notes
+            Method: post
+  GetNote:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamodb
+      Handler: get.main
+      Policies:
+        # Update to just "dynamodb:GetItem"
+        - DynamoDBReadPolicy:
+            TableName: !Ref NotesTable
+      Events:
+        GetNote:
+          Type: Api
+          Properties:
+            Path: /notes/{id}
+            Method: get
+  ListNotes:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamodb
+      Handler: list.main
+      Policies:
+        # Update to just "dynamodb:Scan"
+        - DynamoDBReadPolicy:
+            TableName: !Ref NotesTable
+      Events:
+        ListNotes:
+          Type: Api
+          Properties:
+            Path: /notes
+            Method: get
+  UpdateNote:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamodb
+      Handler: update.main
+      Policies:
+        # Update to just "dynamodb:UpdateItem"
+        - DynamoDBCrudPolicy:
+            TableName: !Ref NotesTable
+      Events:
+        UpdateNote:
+          Type: Api
+          Properties:
+            Path: /notes/{id}
+            Method: put
+  DeleteNote:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamodb
+      Handler: delete.main
+      Policies:
+        # Update to just "dynamodb:DeleteItem"
+        - DynamoDBCrudPolicy:
+            TableName: !Ref NotesTable
+      Events:
+        DeleteNote:
+          Type: Api
+          Properties:
+            Path: /notes/{id}
+            Method: delete
+  PutObject:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3
+      Handler: put.main
+      Policies:
+        # Update to just "s3:PutObject"
+        - S3CrudPolicy:
+            BucketName: !Ref NotesBucket
+      Events:
+        PutObject:
+          Type: Api
+          Properties:
+            Path: /files
+            Method: post
+  GetObjectUrl:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3
+      Handler: get.main
+      Policies:
+        # Update to just "s3:GetObject"
+        - S3ReadPolicy:
+            BucketName: !Ref NotesBucket
+      Events:
+        GetObjectUrl:
+          Type: Api
+          Properties:
+            Path: /files/{fileName}
+            Method: get
+  DeleteObject:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3
+      Handler: delete.main
+      Policies:
+        # Update to just "s3:DeleteObject"
+        - S3CrudPolicy:
+            BucketName: !Ref NotesBucket
+      Events:
+        DeleteObject:
+          Type: Api
+          Properties:
+            Path: /files/{fileName}
+            Method: delete
+
+Outputs:
+  NotesApi:
+    Description: "API Gateway endpoint URL for Notes API"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/"

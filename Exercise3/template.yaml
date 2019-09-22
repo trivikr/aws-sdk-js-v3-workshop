@@ -20,7 +20,7 @@ Resources:
   NotesBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: aws-js-sdk-v3-workshop-files3
+      BucketName: aws-js-sdk-v3-workshop-files-wow
       CorsConfiguration:
         CorsRules:
           - AllowedOrigins:
@@ -36,7 +36,7 @@ Resources:
   NotesTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: aws-js-sdk-workshop-notes3
+      TableName: aws-js-sdk-workshop-notes-wow
       PrimaryKey:
         Name: noteId
         Type: String

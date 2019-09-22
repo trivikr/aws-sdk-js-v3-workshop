@@ -1,7 +1,5 @@
 const config = {
-  GatewayURL: "<ENDPOINT>/Prod",
-  IdentityPoolId: "<IdentityPoolId-for-AwsJsSdkWorkshopIdentityPool>",
-  s3Bucket: "aws-js-sdk-v3-workshop-files",
+  GatewayURL: "https://d40qlgrx2f.execute-api.us-west-2.amazonaws.com/Prod",
   MaxFileSize: 2000000
 };
 

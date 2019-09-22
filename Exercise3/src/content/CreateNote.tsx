@@ -2,7 +2,6 @@ import React, { useState, FormEvent } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { navigate, RouteComponentProps } from "@reach/router";
 import { config } from "../config";
-import { putObject } from "../libs";
 import { HomeButton, ButtonSpinner, PageContainer } from "../components";
 
 const CreateNote = (props: RouteComponentProps) => {
@@ -23,10 +22,22 @@ const CreateNote = (props: RouteComponentProps) => {
 
     setIsLoading(true);
 
-    const createNoteURL = `${config.GatewayURL}/notes`;
+    let attachment;
+    if (file) {
+      const putObjectUrl = `${config.GatewayURL}/files`;
+      try {
+        attachment = await fetch(putObjectUrl, {
+          method: "POST",
+          body: JSON.stringify({ file })
+        });
+      } catch (error) {
+        setErrorMsg(`${error.toString()} - ${putObjectUrl}`);
+        return;
+      }
+    }
 
+    const createNoteURL = `${config.GatewayURL}/notes`;
     try {
-      const attachment = file ? await putObject(file) : undefined;
       await fetch(createNoteURL, {
         method: "POST",
         body: JSON.stringify({ attachment, content: noteContent })

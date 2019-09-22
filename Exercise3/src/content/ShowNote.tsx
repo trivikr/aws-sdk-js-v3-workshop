@@ -4,7 +4,6 @@ import { Form, Card } from "react-bootstrap";
 import { config } from "../config";
 import { DeleteNoteButton } from "./DeleteNoteButton";
 import { SaveNoteButton } from "./SaveNoteButton";
-import { getObjectUrl } from "../libs";
 import { HomeButton, Loading, PageContainer } from "../components";
 
 const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
@@ -25,7 +24,7 @@ const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
         setNoteContent(data.content.S as string);
         if (data.attachment) {
           setAttachment(data.attachment.S);
-          setAttachmentURL(await getObjectUrl(data.attachment.S));
+          //setAttachmentURL(await getObjectUrl(data.attachment.S));
         }
       } catch (error) {
         // Navigate to 404 page, as noteId probably not present

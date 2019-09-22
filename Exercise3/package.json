@@ -20,7 +20,7 @@
     "bundle": "webpack",
     "package": "sam package --output-template-file packaged.yaml --s3-bucket $AWS_JS_SDK_ID",
     "deploy": "sam deploy --template-file packaged.yaml --stack-name $AWS_JS_SDK_ID --capabilities CAPABILITY_IAM",
-    "bpd": "npm run build && npm run package && npm run deploy",
+    "bpd": "npm run bundle && npm run package && npm run deploy",
     "describe": "aws cloudformation describe-stacks --stack-name $AWS_JS_SDK_ID --query 'Stacks[].Outputs[?OutputKey==`NotesApi`][OutputValue]'",
     "start": "react-scripts start",
     "build": "react-scripts build",

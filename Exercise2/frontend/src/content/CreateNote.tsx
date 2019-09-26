@@ -1,11 +1,12 @@
 import React, { useState, FormEvent } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import { navigate, RouteComponentProps } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import { config } from "../config";
 import { putObject } from "../libs";
 import { HomeButton, ButtonSpinner, PageContainer } from "../components";
 
-const CreateNote = (props: RouteComponentProps) => {
+const CreateNote = () => {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const [noteContent, setNoteContent] = useState("");
@@ -31,7 +32,7 @@ const CreateNote = (props: RouteComponentProps) => {
         method: "POST",
         body: JSON.stringify({ attachment, content: noteContent })
       });
-      navigate("/");
+      history.goBack();
     } catch (error) {
       setErrorMsg(`${error.toString()} - ${createNoteURL} - ${noteContent}`);
     } finally {

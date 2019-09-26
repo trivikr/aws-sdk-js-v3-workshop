@@ -11,10 +11,10 @@
     "@aws-sdk/s3-request-presigner": "^0.1.0-preview.2",
     "@aws-sdk/util-create-request": "^0.1.0-preview.2",
     "@aws-sdk/util-format-url": "^0.1.0-preview.1",
-    "@reach/router": "^1.2.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.1.0"
   },
   "scripts": {
     "deploy": "aws cloudformation deploy --template-file template.yaml --stack-name ${AWS_JS_SDK_ID}-frontend --capabilities CAPABILITY_IAM",
@@ -53,9 +53,9 @@
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.4",
-    "@types/reach__router": "^1.2.4",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.0",
     "react-scripts": "3.1.1",
     "typescript": "~3.5.3"
   }

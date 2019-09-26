@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 import { config } from "../config";
-import { navigate } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import { ButtonSpinner } from "../components";
 
 const SaveNoteButton = (props: { noteId: string; noteContent: string }) => {
+  const history = useHistory();
   const [isSaving, setIsSaving] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
 
@@ -20,7 +21,7 @@ const SaveNoteButton = (props: { noteId: string; noteContent: string }) => {
         method: "PUT",
         body: JSON.stringify({ content: noteContent })
       });
-      navigate("/");
+      history.goBack();
     } catch (error) {
       setErrorMsg(`${error.toString()} - ${updateNoteURL} - ${noteContent}`);
     } finally {

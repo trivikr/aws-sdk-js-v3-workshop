@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { RouteComponentProps, navigate } from "@reach/router";
+import { useHistory, useParams } from "react-router-dom";
 import { Form, Card } from "react-bootstrap";
 import { config } from "../config";
-import { DeleteNoteButton } from "./DeleteNoteButton";
-import { SaveNoteButton } from "./SaveNoteButton";
 import { getObjectUrl } from "../libs";
 import { HomeButton, Loading, PageContainer } from "../components";
+import { DeleteNoteButton } from "./DeleteNoteButton";
+import { SaveNoteButton } from "./SaveNoteButton";
 
-const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
-  const { noteId } = props;
+const ShowNote = () => {
+  const { noteId } = useParams();
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [noteContent, setNoteContent] = useState();
   const [attachment, setAttachment] = useState();
@@ -28,14 +29,14 @@ const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
           setAttachmentURL(await getObjectUrl(data.attachment.S));
         }
       } catch (error) {
-        // Navigate to 404 page, as noteId probably not present
-        navigate("/404");
+        // Go back, as noteId probably not present
+        history.goBack();
       } finally {
         setIsLoading(false);
       }
     };
     fetchNote(noteId || "");
-  }, [noteId]);
+  }, [noteId, history]);
 
   return (
     <PageContainer header={<HomeButton />}>

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Router } from "@reach/router";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PageContainer } from "./components";
 
 const ListNotes = lazy(() => import("./content/ListNotes"));
@@ -11,10 +11,12 @@ const Routes = () => (
   <div className="mt-md-4 d-flex flex-column justify-content-center">
     <Suspense fallback={<PageContainer />}>
       <Router>
-        <ListNotes path="/" />
-        <CreateNote path="/note/new" />
-        <ShowNote path="/notes/:noteId" />
-        <NotFound default />
+        <Switch>
+          <Route exact path="/" component={ListNotes} />
+          <Route path="/note/new" component={CreateNote} />
+          <Route path="/notes/:noteId" component={ShowNote} />
+          <Route component={NotFound} />
+        </Switch>
       </Router>
     </Suspense>
   </div>

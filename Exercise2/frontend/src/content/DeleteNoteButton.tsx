@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 import { config } from "../config";
-import { navigate } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import { deleteObject } from "../libs";
 import { ButtonSpinner } from "../components";
 
 const DeleteNoteButton = (props: { noteId: string; attachment?: string }) => {
+  const history = useHistory();
   const { noteId, attachment } = props;
   const [isDeleting, setIsDeleting] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
@@ -23,7 +24,7 @@ const DeleteNoteButton = (props: { noteId: string; attachment?: string }) => {
       await fetch(deleteNoteURL, {
         method: "DELETE"
       });
-      navigate("/");
+      history.goBack();
     } catch (error) {
       setErrorMsg(`${error.toString()} - ${deleteNoteURL} - ${noteId}`);
     } finally {

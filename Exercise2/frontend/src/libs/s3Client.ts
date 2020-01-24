@@ -1,6 +1,6 @@
-import { S3Client } from "@aws-sdk/client-s3-browser";
+import { S3Client } from "@aws-sdk/client-s3";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
-import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity-browser";
+import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { config } from "../config";
 
 // Customization pending https://github.com/aws/aws-sdk-js-v3/issues/185

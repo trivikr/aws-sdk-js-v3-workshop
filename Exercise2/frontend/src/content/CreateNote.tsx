@@ -59,9 +59,11 @@ const CreateNote = (props: RouteComponentProps) => {
         <Form.Group controlId="file">
           <Form.Label>Attachment</Form.Label>
           <Form.Control
-            // @ts-ignore
-            onChange={e => {
-              setFile(e.target.files[0]);
+            onChange={(e: React.FormEvent<HTMLInputElement>) => {
+              const files = (e.target as HTMLInputElement).files;
+              if (files) {
+                setFile(files[0]);
+              }
             }}
             type="file"
           />

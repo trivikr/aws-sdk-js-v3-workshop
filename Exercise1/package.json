@@ -8,7 +8,7 @@
   },
   "scripts": {
     "cdk": "cdk",
-    "build": "webpack"
+    "build:backend": "webpack --config webpack.backend.config.js"
   },
   "keywords": [
     "aws",

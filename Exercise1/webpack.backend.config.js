@@ -3,11 +3,11 @@ const glob = require("glob");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 // Bug https://github.com/webpack/webpack/issues/4453
-const entryArray = glob.sync("./src/*.ts");
+const entryArray = glob.sync("./src/backend/*.ts");
 
 module.exports = {
   entry: entryArray.reduce((acc, item) => {
-    const name = item.replace("./src/", "").replace(".ts", "");
+    const name = item.replace("./src/backend/", "").replace(".ts", "");
     acc[name] = item;
     return acc;
   }, {}),

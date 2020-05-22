@@ -22,9 +22,9 @@ export class NotesApi extends cdk.Construct {
 
     this.handler = new lambda.Function(this, "Handler", {
       runtime: lambda.Runtime.NODEJS_12_X,
-      handler: "app.handler",
+      handler: `${id}.handler`,
       // ToDo: find a better way to pass lambda code
-      code: lambda.Code.fromAsset(`dist/${id}`),
+      code: lambda.Code.fromAsset("dist"),
       environment: {
         NOTES_TABLE_NAME: table.tableName,
       },

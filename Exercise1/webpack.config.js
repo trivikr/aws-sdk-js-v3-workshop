@@ -12,7 +12,7 @@ module.exports = {
   }, {}),
 
   output: {
-    filename: "[name]/app.js",
+    filename: "[name].js",
     libraryTarget: "commonjs",
   },
 

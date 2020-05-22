@@ -1,5 +1,6 @@
 /* eslint-disable */
 const glob = require("glob");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 // Bug https://github.com/webpack/webpack/issues/4453
 const entryArray = glob.sync("./src/*.ts");
@@ -44,4 +45,6 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [new CleanWebpackPlugin()],
 };

@@ -1,0 +1,4 @@
+  
+{
+  "app": "npx ts-node cdk/aws-javascript-sdk-workshop.ts"
+}

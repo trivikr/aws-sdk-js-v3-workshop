@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
 import { Form, Card } from "react-bootstrap";
 import { config } from "../config";
-import { DeleteNoteButton, SaveNoteButton } from "./";
+import { DeleteNoteButton, SaveNoteButton } from ".";
 import { getObjectUrl } from "../libs";
 import { HomeButton, Loading, PageContainer } from "../components";
 

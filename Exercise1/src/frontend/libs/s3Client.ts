@@ -5,12 +5,12 @@ const s3Client = new AWS.S3({
   region: "us-west-2",
   credentials: new AWS.CognitoIdentityCredentials(
     {
-      IdentityPoolId: config.IdentityPoolId
+      IdentityPoolId: config.IdentityPoolId,
     },
     {
-      region: "us-west-2"
+      region: "us-west-2",
     }
-  )
+  ),
 });
 
 export { s3Client };

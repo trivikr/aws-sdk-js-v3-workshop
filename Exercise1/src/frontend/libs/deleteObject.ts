@@ -5,7 +5,7 @@ const deleteObject = async (fileName: string) =>
   s3Client
     .deleteObject({
       Key: fileName,
-      Bucket: config.s3Bucket
+      Bucket: config.s3Bucket,
     })
     .promise();
 

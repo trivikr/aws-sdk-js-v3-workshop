@@ -4,11 +4,16 @@
   "private": true,
   "description": "Execise 1 of AWS JS SDK v3 workshop",
   "dependencies": {
-    "aws-sdk": "^2.603.0"
+    "@reach/router": "^1.2.1",
+    "aws-sdk": "^2.603.0",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0"
   },
   "scripts": {
     "cdk": "cdk",
-    "build:backend": "webpack --config webpack.backend.config.js"
+    "build:backend": "webpack --config webpack.backend.config.js",
+    "build:frontend": "react-scripts build"
   },
   "keywords": [
     "aws",
@@ -42,5 +47,20 @@
     "typescript": "~3.8.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.9"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

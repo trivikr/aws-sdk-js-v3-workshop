@@ -3,7 +3,7 @@ import { success, failure } from "./libs/response";
 
 export const handler = async () => {
   const params = {
-    TableName: process.env.NOTES_TABLE_NAME,
+    TableName: process.env.NOTES_TABLE_NAME || "",
   };
 
   try {

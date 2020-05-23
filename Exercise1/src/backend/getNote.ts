@@ -6,11 +6,11 @@ import { APIGatewayEvent } from "aws-lambda";
 
 export async function main(event: APIGatewayEvent) {
   const params = {
-    TableName: process.env.NOTES_TABLE_NAME,
+    TableName: process.env.NOTES_TABLE_NAME || "",
     // 'Key' defines the partition key and sort key of the item to be retrieved
     // - 'noteId': path parameter
     Key: {
-      noteId: { S: event.pathParameters.id },
+      noteId: { S: event?.pathParameters?.id },
     },
   };
 

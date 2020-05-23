@@ -6,12 +6,12 @@ import { APIGatewayEvent } from "aws-lambda";
 
 export const handler = async (event: APIGatewayEvent) => {
   const params = {
-    TableName: process.env.NOTES_TABLE_NAME,
+    TableName: process.env.NOTES_TABLE_NAME || "",
     // 'Key' defines the partition key and sort key of the item to be removed
     // - 'noteId': path parameter
     Key: {
       noteId: {
-        S: event.pathParameters.id,
+        S: event?.pathParameters?.id,
       },
     },
   };

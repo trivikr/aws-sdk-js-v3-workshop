@@ -8,7 +8,7 @@ import { APIGatewayEvent } from "aws-lambda";
 export const handler = async (event: APIGatewayEvent) => {
   const data = JSON.parse(event.body || "{}");
   const params = {
-    TableName: process.env.NOTES_TABLE_NAME,
+    TableName: process.env.NOTES_TABLE_NAME || "",
     Item: {
       noteId: {
         S: crypto.randomBytes(20).toString("hex"),

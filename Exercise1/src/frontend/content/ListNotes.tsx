@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, RouteComponentProps } from "@reach/router";
-import { config } from "../config";
 import { Card, Alert, CardColumns, Button } from "react-bootstrap";
 import { Loading, PageContainer } from "../components";
 interface Note {
@@ -18,7 +17,7 @@ const ListNotes = (props: RouteComponentProps) => {
   useEffect(() => {
     const fetchNotes = async () => {
       setIsLoading(true);
-      const fetchURL = `${config.GatewayURL}/notes`;
+      const fetchURL = `./notes`;
 
       try {
         const response = await fetch(fetchURL);

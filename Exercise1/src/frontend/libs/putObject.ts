@@ -1,5 +1,5 @@
 import { s3Client } from "./s3Client";
-import { config } from "../config";
+import { s3Bucket } from "../config.json";
 
 const putObject = async (file: File) => {
   const Key = `${Date.now()}-${file.name}`;
@@ -7,7 +7,7 @@ const putObject = async (file: File) => {
     .putObject({
       Key,
       Body: file,
-      Bucket: config.s3Bucket,
+      Bucket: s3Bucket,
       ACL: "public-read",
     })
     .promise();

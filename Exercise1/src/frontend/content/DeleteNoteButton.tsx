@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
-import { config } from "../config";
 import { navigate } from "@reach/router";
 import { deleteObject } from "../libs";
 import { ButtonSpinner } from "../components";
@@ -14,7 +13,7 @@ const DeleteNoteButton = (props: { noteId: string; attachment?: string }) => {
     event.preventDefault();
     setIsDeleting(true);
 
-    const deleteNoteURL = `${config.GatewayURL}/notes/${noteId}`;
+    const deleteNoteURL = `./notes/${noteId}`;
 
     try {
       if (attachment) {

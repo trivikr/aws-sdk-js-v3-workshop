@@ -4,6 +4,7 @@
   "private": true,
   "description": "Backend for the AWS JS SDK v3 workshop",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^1.0.0-gamma.1",
     "aws-sdk": "2.683.0"
   },
   "scripts": {

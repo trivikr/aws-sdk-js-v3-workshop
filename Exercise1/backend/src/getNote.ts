@@ -1,8 +1,8 @@
-import { dynamoDB } from "./libs/dynamoDB";
-import { success, failure } from "./libs/response";
-
 // eslint-disable-next-line no-unused-vars
 import { APIGatewayEvent } from "aws-lambda";
+import { dynamoDB } from "./libs/dynamoDB";
+import { failure, success } from "./libs/response";
+
 
 export const handler = async (event: APIGatewayEvent) => {
   const params = {

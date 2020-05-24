@@ -1,5 +1,5 @@
 import { dynamoDB } from "./libs/dynamoDB";
-import { success, failure } from "./libs/response";
+import { failure, success } from "./libs/response";
 
 export const handler = async () => {
   const params = {

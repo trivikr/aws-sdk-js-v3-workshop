@@ -1,4 +1,4 @@
-import dynamoDB from "./libs/dynamoDB";
+import { dynamoDB } from "./libs/dynamoDB";
 import { success, failure } from "./libs/response";
 
 // eslint-disable-next-line no-unused-vars

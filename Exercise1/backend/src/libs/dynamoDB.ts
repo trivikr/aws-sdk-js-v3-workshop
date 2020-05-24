@@ -1,3 +1,3 @@
 import AWS from "aws-sdk";
 
-export default new AWS.DynamoDB();
+export const dynamoDB = new AWS.DynamoDB();

@@ -1,5 +1,5 @@
-import crypto from "crypto";
-import dynamoDB from "./libs/dynamoDB";
+import { randomBytes } from "crypto";
+import { dynamoDB } from "./libs/dynamoDB";
 import { success, failure } from "./libs/response";
 
 // eslint-disable-next-line no-unused-vars
@@ -11,7 +11,7 @@ export const handler = async (event: APIGatewayEvent) => {
     TableName: process.env.NOTES_TABLE_NAME || "",
     Item: {
       noteId: {
-        S: crypto.randomBytes(20).toString("hex"),
+        S: randomBytes(20).toString("hex"),
       },
       content: {
         S: data.content,

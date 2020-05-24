@@ -1,4 +1,4 @@
-import dynamoDB from "./libs/dynamoDB";
+import { dynamoDB } from "./libs/dynamoDB";
 import { success, failure } from "./libs/response";
 
 export const handler = async () => {

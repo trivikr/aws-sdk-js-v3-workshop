@@ -1,4 +1,4 @@
-export * from "./s3Client";
+export * from "./deleteObject";
 export * from "./getObjectUrl";
 export * from "./putObject";
-export * from "./deleteObject";
+export * from "./s3Client";

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Button, Alert } from "react-bootstrap";
-import { GATEWAY_URL } from "../config.json";
 import { navigate } from "@reach/router";
-import { deleteObject } from "../libs";
+import React, { useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 import { ButtonSpinner } from "../components";
+import { GATEWAY_URL } from "../config.json";
+import { deleteObject } from "../libs";
 
 const DeleteNoteButton = (props: { noteId: string; attachment?: string }) => {
   const { noteId, attachment } = props;

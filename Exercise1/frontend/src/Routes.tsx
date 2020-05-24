@@ -1,6 +1,6 @@
-import React from "react";
 import { Router } from "@reach/router";
-import { ListNotes, CreateNote, ShowNote, NotFound } from "./content";
+import React from "react";
+import { CreateNote, ListNotes, NotFound, ShowNote } from "./content";
 
 const Routes = () => (
   <Router className="mt-md-4 d-flex flex-column justify-content-center">

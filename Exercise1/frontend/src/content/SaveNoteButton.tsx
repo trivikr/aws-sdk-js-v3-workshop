@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Button, Alert } from "react-bootstrap";
-import { GATEWAY_URL } from "../config.json";
 import { navigate } from "@reach/router";
+import React, { useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 import { ButtonSpinner } from "../components";
+import { GATEWAY_URL } from "../config.json";
 
 const SaveNoteButton = (props: { noteId: string; noteContent: string }) => {
   const [isSaving, setIsSaving] = useState(false);

@@ -1,4 +1,5 @@
-import dynamoDB from "./libs/dynamoDB";
+import dynamoDBClient from "./libs/dynamoDB";
+import { ScanCommand } from "@aws-sdk/client-dynamodb";
 import { success, failure } from "./libs/response";
 
 export const handler = async () => {
@@ -7,7 +8,7 @@ export const handler = async () => {
   };
 
   try {
-    const result = await dynamoDB.scan(params).promise();
+    const result = await dynamoDBClient.send(new ScanCommand(params));
     // Return the matching list of items in response body
     return success(result.Items);
   } catch (e) {

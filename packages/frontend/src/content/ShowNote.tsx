@@ -76,4 +76,4 @@ const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
   );
 };
 
-export { ShowNote };
+export default ShowNote;

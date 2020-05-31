@@ -87,4 +87,4 @@ const ListNotes = (props: RouteComponentProps) => {
   );
 };
 
-export { ListNotes };
+export default ListNotes;

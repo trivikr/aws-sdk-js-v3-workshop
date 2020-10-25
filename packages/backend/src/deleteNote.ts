@@ -1,10 +1,11 @@
-import dynamoDB from "./libs/dynamoDB";
+import { DynamoDBClient, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 import { success, failure } from "./libs/response";
 
 // eslint-disable-next-line no-unused-vars
 import { APIGatewayEvent } from "aws-lambda";
 
 export const handler = async (event: APIGatewayEvent) => {
+  const dynamoDBClient = new DynamoDBClient({});
   const params = {
     TableName: process.env.NOTES_TABLE_NAME || "",
     // 'Key' defines the partition key and sort key of the item to be removed
@@ -17,7 +18,7 @@ export const handler = async (event: APIGatewayEvent) => {
   };
 
   try {
-    await dynamoDB.deleteItem(params).promise();
+    await dynamoDBClient.send(new DeleteItemCommand(params));
     return success({ status: true });
   } catch (e) {
     console.log(e);

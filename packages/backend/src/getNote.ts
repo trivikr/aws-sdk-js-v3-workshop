@@ -1,4 +1,5 @@
-import dynamoDB from "./libs/dynamoDB";
+import dynamoDBClient from "./libs/dynamoDB";
+import { GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { success, failure } from "./libs/response";
 
 // eslint-disable-next-line no-unused-vars
@@ -15,7 +16,7 @@ export const handler = async (event: APIGatewayEvent) => {
   };
 
   try {
-    const result = await dynamoDB.getItem(params).promise();
+    const result = await dynamoDBClient.send(new GetItemCommand(params));
     if (result.Item) {
       // Return the retrieved item
       return success(result.Item);

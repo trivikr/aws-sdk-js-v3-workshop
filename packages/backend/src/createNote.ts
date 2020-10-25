@@ -1,5 +1,6 @@
 import crypto from "crypto";
-import dynamoDB from "./libs/dynamoDB";
+import dynamoDBClient from "./libs/dynamoDB";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { success, failure } from "./libs/response";
 
 // eslint-disable-next-line no-unused-vars
@@ -28,7 +29,7 @@ export const handler = async (event: APIGatewayEvent) => {
   }
 
   try {
-    await dynamoDB.putItem(params).promise();
+    await dynamoDBClient.send(new PutItemCommand(params));
     return success(params.Item);
   } catch (e) {
     console.log(e);

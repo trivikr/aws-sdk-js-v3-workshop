@@ -1,15 +1,16 @@
 import { s3Client } from "./s3Client";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { FILES_BUCKET } from "../config.json";
 
 const putObject = async (file: File) => {
   const Key = `${Date.now()}-${file.name}`;
   await s3Client
-    .putObject({
+    .send(
+      new PutObjectCommand({
       Key,
       Body: file,
       Bucket: FILES_BUCKET,
-    })
-    ;
+    }));
   return Key;
 };
 

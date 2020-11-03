@@ -6,4 +6,4 @@ const NotFound = (props: RouteComponentProps) => (
   <PageContainer header={<HomeButton />}>404 Page Not Found</PageContainer>
 );
 
-export { NotFound };
+export default NotFound;

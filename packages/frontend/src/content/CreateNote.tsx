@@ -75,4 +75,4 @@ const CreateNote = (props: RouteComponentProps) => {
   );
 };
 
-export { CreateNote };
+export default CreateNote;

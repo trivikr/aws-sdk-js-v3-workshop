@@ -9,7 +9,7 @@ const putObject = async (file: File) => {
       Body: file,
       Bucket: FILES_BUCKET,
     })
-    .promise();
+    ;
   return Key;
 };
 

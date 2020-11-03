@@ -7,6 +7,6 @@ const deleteObject = async (fileName: string) =>
       Key: fileName,
       Bucket: FILES_BUCKET,
     })
-    .promise();
+    ;
 
 export { deleteObject };

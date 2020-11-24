@@ -2,6 +2,7 @@
 
 const { resolve } = require("path");
 const glob = require("glob");
+const { ESBuildPlugin } = require("esbuild-loader");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -38,10 +39,18 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
+        loader: "esbuild-loader",
+        options: {
+          loader: "ts", // Or 'ts' if you don't need tsx
+          target: "es2015",
+        },
       },
     ],
   },
 
-  plugins: [new ESLintPlugin({ extensions: ["ts"] }), new CleanWebpackPlugin()],
+  plugins: [
+    new ESBuildPlugin(),
+    new ESLintPlugin({ extensions: ["ts"] }),
+    new CleanWebpackPlugin(),
+  ],
 };

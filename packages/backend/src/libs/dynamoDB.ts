@@ -1,3 +1,3 @@
-import AWS from "aws-sdk";
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
 
-export default new AWS.DynamoDB();
+export default new DynamoDB({});

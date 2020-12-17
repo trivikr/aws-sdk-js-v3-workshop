@@ -7,7 +7,7 @@ export const handler = async () => {
   };
 
   try {
-    const result = await dynamoDB.scan(params).promise();
+    const result = await dynamoDB.scan(params);
     // Return the matching list of items in response body
     return success(result.Items);
   } catch (e) {

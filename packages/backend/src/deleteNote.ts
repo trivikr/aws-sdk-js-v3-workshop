@@ -17,7 +17,7 @@ export const handler = async (event: APIGatewayEvent) => {
   };
 
   try {
-    await dynamoDB.deleteItem(params).promise();
+    await dynamoDB.deleteItem(params);
     return success({ status: true });
   } catch (e) {
     console.log(e);

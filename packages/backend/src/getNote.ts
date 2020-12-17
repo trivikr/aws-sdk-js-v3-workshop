@@ -15,7 +15,7 @@ export const handler = async (event: APIGatewayEvent) => {
   };
 
   try {
-    const result = await dynamoDB.getItem(params).promise();
+    const result = await dynamoDB.getItem(params);
     if (result.Item) {
       // Return the retrieved item
       return success(result.Item);

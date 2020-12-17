@@ -28,7 +28,7 @@ export const handler = async (event: APIGatewayEvent) => {
   };
 
   try {
-    await dynamoDB.updateItem(params).promise();
+    await dynamoDB.updateItem(params);
     return success({ status: true });
   } catch (e) {
     console.log(e);

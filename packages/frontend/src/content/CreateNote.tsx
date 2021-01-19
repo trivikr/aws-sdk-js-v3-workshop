@@ -1,9 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { navigate, RouteComponentProps } from "@reach/router";
-import { GATEWAY_URL, MAX_FILE_SIZE } from "../config.json";
 import { putObject } from "../libs";
 import { HomeButton, ButtonSpinner, PageContainer } from "../components";
+import config from "../config.json";
+
+const { GATEWAY_URL, MAX_FILE_SIZE } = config;
 
 const CreateNote = (props: RouteComponentProps) => {
   const [isLoading, setIsLoading] = useState(false);

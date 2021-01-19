@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
 import { Form, Card } from "react-bootstrap";
-import { GATEWAY_URL } from "../config.json";
 import { DeleteNoteButton, SaveNoteButton } from "./";
 import { getObjectUrl } from "../libs";
 import { HomeButton, Loading, PageContainer } from "../components";
+import config from "../config.json";
+
+const { GATEWAY_URL } = config;
 
 const ShowNote = (props: RouteComponentProps<{ noteId: string }>) => {
   const { noteId } = props;

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, RouteComponentProps } from "@reach/router";
-import { GATEWAY_URL } from "../config.json";
 import { Card, Alert, CardColumns, Button } from "react-bootstrap";
 import { Loading, PageContainer } from "../components";
+import config from "../config.json";
+
+const { GATEWAY_URL } = config;
 interface Note {
   noteId: string;
   createdAt: string;

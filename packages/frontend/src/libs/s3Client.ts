@@ -1,5 +1,7 @@
 import AWS from "aws-sdk";
-import { IDENTITY_POOL_ID } from "../config.json";
+import config from "../config.json";
+
+const { IDENTITY_POOL_ID } = config;
 
 const s3Client = new AWS.S3({
   region: "us-west-2",

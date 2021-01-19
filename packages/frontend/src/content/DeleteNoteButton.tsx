@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
-import { GATEWAY_URL } from "../config.json";
 import { navigate } from "@reach/router";
 import { deleteObject } from "../libs";
 import { ButtonSpinner } from "../components";
+import config from "../config.json";
+
+const { GATEWAY_URL } = config;
 
 const DeleteNoteButton = (props: { noteId: string; attachment?: string }) => {
   const { noteId, attachment } = props;
